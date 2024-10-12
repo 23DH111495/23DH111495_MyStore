@@ -1,21 +1,23 @@
-﻿@model IEnumerable<_23DH111495_MyStore.Models.Category>
+﻿@model IEnumerable<_23DH111495_MyStore.Models.Category >
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="bg-success">DANH MỤC DANH MỤC</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+@*<p>
+    @Html.ActionLink("Thêm mới", "Create", null ,new {@class = "btn btn-primary btn-sm" })
+</p>*@
+<table class="table bg-info col-md-4">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
+        <th class="bg-success @*col-lg-8 col-md-4 col-sm-2*@">
+            @*@Html.DisplayNameFor(model => model.CategoryName)*@
+            TÊN DANH MỤC
         </th>
-        <th></th>
+        <th class="bg-success col-md-2 "></th>
+        @* col-lg-4 col-sm-1 *@
     </tr>
 
 @foreach (var item in Model) {
@@ -24,11 +26,14 @@
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+            @Html.ActionLink("Cập nhật", "Edit", new { id=item.CategoryID }, new { @class = "btn btn-primary btn-sm"}) @*|*@
+            @*@Html.ActionLink("Chi tiết", "Details", new { id=item.CategoryID }, new { @class = "btn btn-primary btn-sm" })*@ @*|*@
+            @Html.ActionLink("Xóa", "Delete", new { id=item.CategoryID }, new { @class = "btn btn-primary btn-sm" })
         </td>
     </tr>
 }
 
 </table>
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary btn-sm" })
+</p>

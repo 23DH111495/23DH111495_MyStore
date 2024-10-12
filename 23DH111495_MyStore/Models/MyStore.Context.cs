@@ -13,10 +13,10 @@ namespace _23DH111495_MyStore.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MyStoreEntities : DbContext
+    public partial class MyStoreEntities1 : DbContext
     {
-        public MyStoreEntities()
-            : base("name=MyStoreEntities")
+        public MyStoreEntities1()
+            : base("name=MyStoreEntities1")
         {
         }
     

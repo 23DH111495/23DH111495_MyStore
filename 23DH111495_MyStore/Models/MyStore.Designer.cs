@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Microsoft VS Project\Lập trình web\BE\23DH111495_MyStore\23DH111495_MyStore\Models\MyStoreModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Microsoft VS Project\Lập trình web\BE\23DH111495_MyStore\23DH111495_MyStore\Models\MyStore.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

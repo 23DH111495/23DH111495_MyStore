@@ -12,7 +12,7 @@ namespace _23DH111495_MyStore.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
-        private MyStoreEntities db = new MyStoreEntities();
+        private MyStoreEntities1 db = new MyStoreEntities1();
 
         // GET: Admin/Categories
         public ActionResult Index()
