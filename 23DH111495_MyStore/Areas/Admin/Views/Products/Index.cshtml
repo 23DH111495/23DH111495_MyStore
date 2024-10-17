@@ -1,4 +1,5 @@
-﻿@model IEnumerable<_23DH111495_MyStore.Models.Product>
+﻿@*@model IEnumerable<_23DH111495_MyStore.Models.Product>*@
+@model _23DH111495_MyStore.Models.ViewModel.ProductSearchVM
 
 @{
     ViewBag.Title = "Index";
@@ -11,8 +12,108 @@
             height: 150px;
             max-width: 150px;
         }
+
+        .search-container, .order-container {
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
+@*<h2 class="bg-success">DANH SÁCH SẢN PHẨM</h2>*@
+
+@*<table class="table bg-info container-fluid">
+    <tr>
+        <th class="bg-success col-md-2">Hình ảnh</th>
+        <th class="bg-success col-md-2">Tên sản phẩm</th>
+        <th class="bg-success">Mô tả</th>
+        <th class="bg-success col-md-1">Đơn giá</th>
+        <th class="bg-success col-md-2">Danh mục</th>
+        <th class="bg-success col-md-4"></th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td><img src="@Html.DisplayFor(modelItem => item.ProductImage)" /></td>
+            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ProductDescription)</td>
+            <td>@Html.DisplayFor(modelItem => item.ProductPrice)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ProductID }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductID }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ProductID }, new { @class = "btn btn-primary btn-sm" })
+            </td>
+        </tr>
+    }
+</table>*@
+@*<div class="form-group">
+    <div class="col-md-4 col-md-offset-8" style="margin-left: 280px;">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary btn-sm" })
+    </div>
+</div>*@
+<body>
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+    {
+        <div class="form-group search-container">
+            @Html.TextBoxFor(m => m.SearchTerm, new
+            {
+                @class = "form-control",
+                placeholder = "Nhập tên, mô tả hoặc chủng loại sản phẩm"
+            })
+            @Html.TextBoxFor(m => m.MinPrice, new
+            {
+                @class = "form-control",
+                placeholder = "Nhập giá trị tối thiểu",
+                type = "number"
+            })
+            @Html.TextBoxFor(m => m.MaxPrice, new
+             {
+                 @class = "form-control",
+                 placeholder = "Nhập giá trị tối đa",
+                 type = "number"
+             })
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+        <div class="form-group order-container">
+            Sắp xếp theo:
+            @Html.ActionLink("Tên tăng dần", "Index", "Products", new
+            {
+                SortOrder = "name_asc",
+                searchTerm = Model.SearchTerm,
+                minPrice = Model.MinPrice,
+                maxPrice = Model.MaxPrice
+            }, null) |
+
+            @Html.ActionLink("Tên giảm dần", "Index", "Products", new
+            {
+                SortOrder = "name_desc",
+                searchTerm = Model.SearchTerm,
+                minPrice = Model.MinPrice,
+                maxPrice = Model.MaxPrice
+            }, null) |
+
+            @Html.ActionLink("Giá tăng dần", "Index", "Products", new
+            {
+                SortOrder = "price_asc",
+                searchTerm = Model.SearchTerm,
+                minPrice = Model.MinPrice,
+                maxPrice = Model.MaxPrice
+            }, null) |
+
+            @Html.ActionLink("Giá giảm dần", "Index", "Products", new
+            {
+                SortOrder = "price_desc",
+                searchTerm = Model.SearchTerm,
+                minPrice = Model.MinPrice,
+                maxPrice = Model.MaxPrice
+            }, null)
+        </div>
+    }
+    @* Form kết quả tìm kiếm *@
+</body>
 <h2 class="bg-success">DANH SÁCH SẢN PHẨM</h2>
 
 <table class="table bg-info container-fluid">
@@ -25,7 +126,7 @@
         <th class="bg-success col-md-4"></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Products)
     {
         <tr>
             <td><img src="@Html.DisplayFor(modelItem => item.ProductImage)" /></td>
